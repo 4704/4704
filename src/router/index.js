@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '@/views/Index/Index.vue'
+import Index from '@/views/index/index.vue'
 import ShowTeachers from '@/views/ShowTeachers/ShowTeachers.vue'
 import BookList from '@/views/BookList/BookList.vue'
 import News from '@/views/News/News.vue'
@@ -48,10 +48,6 @@ const routes = [{
         component: SetUser
     }
 ]
-
-
-
-
 const router = new VueRouter({
     routes
 })

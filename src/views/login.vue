@@ -17,12 +17,8 @@
       <div class="from-top">
         <img style="width:35px;height:43px" src="../../public/images/A_09.jpg">
         <div class="from-top-box">
-          <input
-            class="input"
-            :type="flag? 'text':'password'"
-            :placeholder="flag ? '请输入验证码':'请输入密码'"
-            v-model="pwd"
-          >
+          <input class="input" :type="flag ? 'text' : 'password'"
+            :placeholder="flag ? '请输入验证码' : '请输入密码'" v-model="pwd" >
         </div>
       </div>
     </div>
@@ -68,7 +64,7 @@ export default {
         if (PhoneReg.test(this.phone)) {
           const data = await sms_code({
             mobile: this.phone,
-            sms_type: "login"
+            sms_type: "login",
           });
           console.log(data);
         } else {
@@ -78,43 +74,41 @@ export default {
     },
     // 登陆
     async addLogin() {
-       let PhoneReg = /^1[3456789]\d{9}$/;
-        if (PhoneReg.test(this.phone) || this.pwd.length == 6) {
-          if (this.flag) { //true 为验证码登陆
-            const { data: res } = await login({
-              mobile: this.phone,
-              sms_code: this.pwd,
-              type: 2,
-              client: "1"
-            });
+      let PhoneReg = /^1[3456789]\d{9}$/;
+      if (PhoneReg.test(this.phone) || this.pwd.length == 6) {
+        if (this.flag) {
+          //true 为验证码登陆
+          const { data: res } = await login({
+            mobile: this.phone,
+            sms_code: this.pwd,
+            type: 2,
+            client: "1",
+          });
+          this.$store.commit("token", res.data.remember_token);
+          Toast.success("登陆成功");
+          this.$router.push("/person");
+        } else {
+          //false 为密码登陆
+          const { data: res } = await login({
+            mobile: this.phone,
+            password: this.pwd,
+            type: 1,
+            client: "1",
+          });
+          console.log(res);
+          if (res.code == 200) {
             this.$store.commit("token", res.data.remember_token);
             Toast.success("登陆成功");
-            this.$router.push("/person")
-          }else{ //false 为密码登陆
-            const { data: res } = await login({
-              mobile: this.phone,
-              password: this.pwd,
-              type: 1,
-              client: "1"
-            });
-            console.log(res);
-            if(res.code == 200){
-              this.$store.commit("token", res.data.remember_token);
-              Toast.success("登陆成功");
-              this.$router.push("/person")
-            }
+            this.$router.push("/person");
           }
-        } else {
-          Toast.fail("请输入正确的手机号");
         }
-
-      
-    }
-  }
+      } else {
+        Toast.fail("请输入正确的手机号");
+      }
+    },
+  },
 };
 </script>
-
-
 
 <style lang="scss" scoped>
 .login {

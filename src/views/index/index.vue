@@ -68,9 +68,6 @@
                     </div>
                 </div>
             </div>
-
-
-
             <!-- 名师 -->
             <div class="teacher">
                 <div class="t-header">
@@ -136,7 +133,7 @@ export default {
   width: 750px;
   height: 100%;
   padding-bottom: 80px;
-//   首页头部搜索框
+   /*首页头部搜索框*/
   header{
       width: 100vw;
       height: 13.33333vw;
@@ -163,7 +160,7 @@ export default {
           padding-left: 40px;
       }
   }
-//   首页轮播图
+/*  首页轮播图  */  
   .van-swipe{
       width: 100vw;
       height: 53.33333vw;
@@ -172,7 +169,7 @@ export default {
           height:100%;
       }
   }
-//   大威天龙
+/*  大威天龙*/ 
   .dwtl{
       width:100vw;
       height: 200px;
@@ -203,13 +200,13 @@ export default {
       }
   }
 
-//   首页资深讲师&推荐课程&名师 
+/*首页资深讲师&推荐课程&名师 */   
   .card-list{
       width: 100vw;
       background-color:  #F7F8FA;
       padding-top: 20px;
       margin-bottom: 1000px;
-    //   资深讲师
+    /* 资深讲师*/  
       .teacher{
           width: 90vw;
           margin: auto;
@@ -277,7 +274,7 @@ export default {
               }
           }
       }
-    // 推荐课程
+    /*推荐课程*/ 
     .tjkc{
         width: 90vw;
         margin: auto;
